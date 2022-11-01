@@ -1,10 +1,52 @@
 ﻿@page
+
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    string dataFile = "App_Data\\Meteorite_Landings.csv";
+    Array userData = System.IO.File.ReadAllLines(dataFile);
 }
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Chart.js Tutorial</title>
+
+    <!-- Chart.js import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <!-- Bootstrap core CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap core JS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</head>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <!-- List all file data-->
+    <!-- @foreach (string dataLine in userData)
+    {
+        foreach (string dataItem in dataLine.Split(','))
+        {
+            @dataItem <text>&nbsp;</text>
+        }
+        <br />
+    }
+    -->
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">
+        World population growth rate (%)
+    </div>
+    <div class="card-body">
+        <canvas id="line">
+            <script src="js\line.js"></script>
+        </canvas>
+    </div>
 </div>
